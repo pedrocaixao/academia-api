@@ -1,0 +1,14 @@
+# Opcional: sobe um MariaDB já com o banco e a tabela criados.
+# Uso: docker compose up -d
+services:
+  db:
+    image: mariadb:11
+    container_name: academia-db
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "1"
+      MARIADB_DATABASE: academia
+    ports:
+      - "3306:3306"
+    volumes:
+      # o schema.sql roda automaticamente na primeira vez que o container sobe
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
