@@ -1,0 +1,80 @@
+{
+  "info": {
+    "name": "API Academia - Aluno",
+    "description": "Coleção para testar o CRUD de aluno. Suba a API com npm start antes de executar.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Listar alunos (GET /aluno)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/aluno", "host": ["{{baseUrl}}"], "path": ["aluno"] }
+      }
+    },
+    {
+      "name": "Buscar aluno (GET /aluno/1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/aluno/1", "host": ["{{baseUrl}}"], "path": ["aluno", "1"] }
+      }
+    },
+    {
+      "name": "Criar aluno (POST /aluno)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Diego Rocha\",\n  \"telefone\": \"(62) 96666-4444\",\n  \"plano\": \"Mensal\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/aluno", "host": ["{{baseUrl}}"], "path": ["aluno"] }
+      }
+    },
+    {
+      "name": "Atualizar aluno (PUT /aluno/1)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Ana Souza\",\n  \"telefone\": \"(62) 99999-1111\",\n  \"plano\": \"Anual\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/aluno/1", "host": ["{{baseUrl}}"], "path": ["aluno", "1"] }
+      }
+    },
+    {
+      "name": "Remover aluno (DELETE /aluno/1)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/aluno/1", "host": ["{{baseUrl}}"], "path": ["aluno", "1"] }
+      }
+    },
+    {
+      "name": "Erro: aluno inexistente (GET /aluno/9999)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/aluno/9999", "host": ["{{baseUrl}}"], "path": ["aluno", "9999"] }
+      }
+    },
+    {
+      "name": "Erro: dados inválidos (POST /aluno sem plano)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Sem Plano\",\n  \"telefone\": \"(62) 90000-0000\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/aluno", "host": ["{{baseUrl}}"], "path": ["aluno"] }
+      }
+    }
+  ]
+}
